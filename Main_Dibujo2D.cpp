@@ -99,7 +99,9 @@ int main() {
 				// 15: Esquina inferior izquierda del rombo central
 				-0.25f, -0.45f, 0.0f,    0.98f, 0.82f, 0.76f,
 				// 16: Esquina inferior derecha del rombo central
-				 0.25f, -0.45f, 0.0f,    0.92f, 0.75f, 0.68f
+				 0.25f, -0.45f, 0.0f,    0.92f, 0.75f, 0.68f,
+				 // 17: Punta inferior central del abdomen
+	0.0f,  -0.80f, 0.0f,    0.95f, 0.78f, 0.70f
 	};
 
 	unsigned int indices[] = {
@@ -127,7 +129,12 @@ int main() {
         8, 6, 13,
         8, 13, 12,
         8, 12, 14,
-        8, 14, 7
+        8, 14, 7,
+		// --- Pecho inferior (patrón de rombos/triángulos) ---
+	12, 13, 15,
+	12, 15, 17,
+	12, 17, 16,
+	12, 16, 14
 	};
 
 
@@ -187,7 +194,7 @@ int main() {
        // glDrawArrays(GL_LINE_LOOP,0,4);
         
         //glDrawArrays(GL_TRIANGLES,0,3);
-        glDrawElements(GL_TRIANGLES, 39 ,GL_UNSIGNED_INT,0);
+        glDrawElements(GL_TRIANGLES, 51 ,GL_UNSIGNED_INT,0);
 
         
         
