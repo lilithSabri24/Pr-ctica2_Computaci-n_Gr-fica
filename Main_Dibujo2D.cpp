@@ -125,7 +125,22 @@ int main() {
   // 26: Unión superior ala izquierda
  -0.40f,  0.20f, 0.0f,    0.75f, 0.88f, 0.95f,
  // 27: Unión superior ala derecha
- 0.40f,  0.20f, 0.0f,    0.75f, 0.88f, 0.95f
+ 0.40f,  0.20f, 0.0f,    0.75f, 0.88f, 0.95f,
+ // --- VÉRTICES DE LAS PATAS (AMARILLO / NARANJA) ---
+	// 28: Esquina exterior pata izquierda
+   -0.35f, -0.92f, 0.0f,    0.98f, 0.75f, 0.20f,
+   // 29: Base inferior pata izquierda
+  -0.12f, -0.92f, 0.0f,    0.98f, 0.75f, 0.20f,
+  // 30: Base inferior pata derecha
+  0.12f, -0.92f, 0.0f,    0.95f, 0.70f, 0.15f,
+  // 31: Esquina exterior pata derecha
+  0.35f, -0.92f, 0.0f,    0.95f, 0.70f, 0.15f,
+
+  // --- VÉRTICES DE LOS OJOS (NEGRO) ---
+  // 32: Ojo izquierdo
+ -0.12f,  0.52f, 0.0f,    0.05f, 0.05f, 0.05f,
+ // 33: Ojo derecho
+ 0.12f,  0.52f, 0.0f,    0.05f, 0.05f, 0.05f
 	};
 
 	unsigned int indices[] = {
@@ -182,7 +197,14 @@ int main() {
 	5, 20, 27,
 	27, 20, 24,
 	20, 25, 24,
-	20, 21, 25
+	20, 21, 25,
+	// --- Pata izquierda ---
+	19, 28, 29,
+	19, 29, 17,
+
+	// --- Pata derecha ---
+	21, 17, 30,
+	21, 30, 31
 	};
 
 
@@ -228,7 +250,17 @@ int main() {
 		// Clear the colorbuffer
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+		// Dibujar toda la figura (cabeza, torso, alas y patas)
+		ourShader.Use();
+		glBindVertexArray(VAO);
 
+		glDrawElements(GL_TRIANGLES, 117, GL_UNSIGNED_INT, 0);
+
+		// Dibujar los ojos usando puntos con grosor
+		glPointSize(14.0f);
+		glDrawArrays(GL_POINTS, 32, 2); // Dibuja los vértices 32 y 33 como puntos
+
+		glBindVertexArray(0);
 
 		// Draw our first triangle
         ourShader.Use();
@@ -242,7 +274,7 @@ int main() {
        // glDrawArrays(GL_LINE_LOOP,0,4);
         
         //glDrawArrays(GL_TRIANGLES,0,3);
-        glDrawElements(GL_TRIANGLES, 105 ,GL_UNSIGNED_INT,0);
+        glDrawElements(GL_TRIANGLES, 117 ,GL_UNSIGNED_INT,0);
 
         
         
