@@ -65,31 +65,41 @@ int main() {
 		// 1: Superior izquierdo
 	   -0.28f,  0.82f, 0.0f,    0.80f, 0.82f, 0.84f,
 	   // 2: Lateral izquierdo
-	  -0.40f,  0.50f, 0.0f,    0.80f, 0.82f, 0.84f,
-	  // 3: Punto medio de la frente
-	  0.0f,   0.45f, 0.0f,    0.85f, 0.87f, 0.89f,
-	  // 4: Superior derecho (gris ligeramente más oscuro para sombra)
-	  0.28f,  0.82f, 0.0f,    0.68f, 0.70f, 0.72f,
-	  // 5: Lateral derecho
-	  0.40f,  0.50f, 0.0f,    0.68f, 0.70f, 0.72f,
+	   -0.40f,  0.50f, 0.0f,    0.80f, 0.82f, 0.84f,
+	   // 3: Punto medio de la frente
+		0.0f,   0.45f, 0.0f,    0.85f, 0.87f, 0.89f,
+		// 4: Superior derecho (gris ligeramente más oscuro para sombra)
+		 0.28f,  0.82f, 0.0f,    0.68f, 0.70f, 0.72f,
+		 // 5: Lateral derecho
+		  0.40f,  0.50f, 0.0f,    0.68f, 0.70f, 0.72f,
 
-	  // --- VÉRTICES DE LA CARA BLANCA (INTERIOR) ---
-	  // 6: Esquina inferior izquierda cara
-	 -0.20f,  0.22f, 0.0f,    0.95f, 0.95f, 0.95f,
-	 // 7: Esquina inferior derecha cara
-	 0.20f,  0.22f, 0.0f,    0.95f, 0.95f, 0.95f,
-	 // 8: Punto inferior donde une el cuello
-	 0.0f,   0.20f, 0.0f,    0.95f, 0.95f, 0.95f,
+		  // --- VÉRTICES DE LA CARA BLANCA (INTERIOR) ---
+		  // 6: Esquina inferior izquierda cara
+		  -0.20f,  0.22f, 0.0f,    0.95f, 0.95f, 0.95f,
+		  // 7: Esquina inferior derecha cara
+		   0.20f,  0.22f, 0.0f,    0.95f, 0.95f, 0.95f,
+		   // 8: Punto inferior donde une el cuello
+			0.0f,   0.20f, 0.0f,    0.95f, 0.95f, 0.95f,
 
-	 // --- VÉRTICES DEL PICO (AMARILLO) ---
-	 // 9: Pico superior izq
-	-0.10f,  0.42f, 0.0f,    0.98f, 0.85f, 0.10f,
-	// 10: Pico superior der
-	0.10f,  0.42f, 0.0f,    0.98f, 0.85f, 0.10f,
-	// 11: Punta del pico abajo
-	0.0f,   0.22f, 0.0f,    0.90f, 0.75f, 0.05f,
-	// 12 centro del pecho
-	0.0f,  -0.10f, 0.0f,    0.98f, 0.82f, 0.76f // Durazno claro
+			// --- VÉRTICES DEL PICO (AMARILLO) ---
+			// 9: Pico superior izq
+			-0.10f,  0.42f, 0.0f,    0.98f, 0.85f, 0.10f,
+			// 10: Pico superior der
+			 0.10f,  0.42f, 0.0f,    0.98f, 0.85f, 0.10f,
+			 // 11: Punta del pico abajo
+			  0.0f,   0.22f, 0.0f,    0.90f, 0.75f, 0.05f,
+
+			  // --- VÉRTICES DEL PECHO ---
+			  // 12: Centro del pecho (corregida la coma al final)
+			   0.0f,  -0.10f, 0.0f,    0.98f, 0.82f, 0.76f,
+			   // 13: Esquina izquierda del pecho (corregido el -0.25f)
+			   -0.25f, -0.10f, 0.0f,    0.98f, 0.82f, 0.76f,
+			   // 14: Esquina derecha del pecho
+				0.25f, -0.10f, 0.0f,    0.92f, 0.75f, 0.68f,
+				// 15: Esquina inferior izquierda del rombo central
+				-0.25f, -0.45f, 0.0f,    0.98f, 0.82f, 0.76f,
+				// 16: Esquina inferior derecha del rombo central
+				 0.25f, -0.45f, 0.0f,    0.92f, 0.75f, 0.68f
 	};
 
 	unsigned int indices[] = {
@@ -113,7 +123,11 @@ int main() {
 		9, 11, 10,
 
 		// --- Primer triángulo del pecho ---
-	    8, 6, 12
+		// --- Pecho superior (Trapecio dividido en triángulos) ---
+        8, 6, 13,
+        8, 13, 12,
+        8, 12, 14,
+        8, 14, 7
 	};
 
 
@@ -173,7 +187,7 @@ int main() {
        // glDrawArrays(GL_LINE_LOOP,0,4);
         
         //glDrawArrays(GL_TRIANGLES,0,3);
-        glDrawElements(GL_TRIANGLES, 30 ,GL_UNSIGNED_INT,0);
+        glDrawElements(GL_TRIANGLES, 39 ,GL_UNSIGNED_INT,0);
 
         
         
