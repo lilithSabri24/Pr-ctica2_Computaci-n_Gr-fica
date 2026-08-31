@@ -23,7 +23,7 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Dibujo de Primitivas en 2D", NULL, NULL);
+	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Práctica 2; Dibujo de Pingüino en 2D", NULL, NULL);
 	glfwSetFramebufferSizeCallback(window, resize);
 	
 	//Verificaci�n de errores de creacion  ventana
@@ -87,7 +87,9 @@ int main() {
 	// 10: Pico superior der
 	0.10f,  0.42f, 0.0f,    0.98f, 0.85f, 0.10f,
 	// 11: Punta del pico abajo
-	0.0f,   0.22f, 0.0f,    0.90f, 0.75f, 0.05f
+	0.0f,   0.22f, 0.0f,    0.90f, 0.75f, 0.05f,
+	// 12 centro del pecho
+	0.0f,  -0.10f, 0.0f,    0.98f, 0.82f, 0.76f // Durazno claro
 	};
 
 	unsigned int indices[] = {
@@ -108,7 +110,10 @@ int main() {
 		3, 7, 5,
 
 		// --- Pico amarillo ---
-		9, 11, 10
+		9, 11, 10,
+
+		// --- Primer triángulo del pecho ---
+	    8, 6, 12
 	};
 
 
@@ -168,7 +173,7 @@ int main() {
        // glDrawArrays(GL_LINE_LOOP,0,4);
         
         //glDrawArrays(GL_TRIANGLES,0,3);
-        glDrawElements(GL_TRIANGLES, 27 ,GL_UNSIGNED_INT,0);
+        glDrawElements(GL_TRIANGLES, 30 ,GL_UNSIGNED_INT,0);
 
         
         
