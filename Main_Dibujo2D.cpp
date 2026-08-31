@@ -1,3 +1,5 @@
+//
+
 #include<iostream>
 
 //#define GLEW_STATIC
@@ -110,7 +112,20 @@ int main() {
   // 20: Costado medio derecho
   0.38f, -0.10f, 0.0f,    0.68f, 0.70f, 0.72f, // Gris sombra
   // 21: Costado inferior derecho
-  0.32f, -0.65f, 0.0f,    0.68f, 0.70f, 0.72f
+  0.32f, -0.65f, 0.0f,    0.68f, 0.70f, 0.72f,
+  // --- VÉRTICES DE LAS ALAS Y BASE REDONDEADA ---
+	// 22: Punta exterior ala izquierda (Celeste)
+   -0.65f, -0.35f, 0.0f,    0.75f, 0.88f, 0.95f,
+   // 23: Base redondeada baja izquierda (Gris)
+  -0.45f, -0.75f, 0.0f,    0.80f, 0.82f, 0.84f,
+  // 24: Punta exterior ala derecha (Celeste)
+  0.65f, -0.35f, 0.0f,    0.75f, 0.88f, 0.95f,
+  // 25: Base redondeada baja derecha (Gris sombra)
+  0.45f, -0.75f, 0.0f,    0.68f, 0.70f, 0.72f,
+  // 26: Unión superior ala izquierda
+ -0.40f,  0.20f, 0.0f,    0.75f, 0.88f, 0.95f,
+ // 27: Unión superior ala derecha
+ 0.40f,  0.20f, 0.0f,    0.75f, 0.88f, 0.95f
 	};
 
 	unsigned int indices[] = {
@@ -156,7 +171,18 @@ int main() {
 	7, 20, 14,
 	14, 20, 16,
 	16, 20, 21,
-	16, 21, 17
+	16, 21, 17,
+	// --- Ala y costado exterior izquierdo ---
+	2, 26, 18,
+	26, 22, 18,
+	18, 22, 23,
+	18, 23, 19,
+
+	// --- Ala y costado exterior derecho ---
+	5, 20, 27,
+	27, 20, 24,
+	20, 25, 24,
+	20, 21, 25
 	};
 
 
@@ -216,7 +242,7 @@ int main() {
        // glDrawArrays(GL_LINE_LOOP,0,4);
         
         //glDrawArrays(GL_TRIANGLES,0,3);
-        glDrawElements(GL_TRIANGLES, 81 ,GL_UNSIGNED_INT,0);
+        glDrawElements(GL_TRIANGLES, 105 ,GL_UNSIGNED_INT,0);
 
         
         
