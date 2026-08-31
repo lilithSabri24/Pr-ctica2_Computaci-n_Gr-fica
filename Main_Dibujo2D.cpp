@@ -101,7 +101,16 @@ int main() {
 				// 16: Esquina inferior derecha del rombo central
 				 0.25f, -0.45f, 0.0f,    0.92f, 0.75f, 0.68f,
 				 // 17: Punta inferior central del abdomen
-	0.0f,  -0.80f, 0.0f,    0.95f, 0.78f, 0.70f
+	0.0f,  -0.80f, 0.0f,    0.95f, 0.78f, 0.70f,
+	// --- VÉRTICES DE LOS COSTADOS DEL CUERPO (GRIS) ---
+	// 18: Costado medio izquierdo
+   -0.38f, -0.10f, 0.0f,    0.80f, 0.82f, 0.84f, // Gris claro
+   // 19: Costado inferior izquierdo
+  -0.32f, -0.65f, 0.0f,    0.80f, 0.82f, 0.84f,
+  // 20: Costado medio derecho
+  0.38f, -0.10f, 0.0f,    0.68f, 0.70f, 0.72f, // Gris sombra
+  // 21: Costado inferior derecho
+  0.32f, -0.65f, 0.0f,    0.68f, 0.70f, 0.72f
 	};
 
 	unsigned int indices[] = {
@@ -134,7 +143,20 @@ int main() {
 	12, 13, 15,
 	12, 15, 17,
 	12, 17, 16,
-	12, 16, 14
+	12, 16, 14,
+	// --- Costado izquierdo (Gris claro) ---
+	2, 6, 18,
+	6, 13, 18,
+	13, 15, 18,
+	15, 19, 18,
+	15, 17, 19,
+
+	// --- Costado derecho (Gris sombra) ---
+	5, 20, 7,
+	7, 20, 14,
+	14, 20, 16,
+	16, 20, 21,
+	16, 21, 17
 	};
 
 
@@ -194,7 +216,7 @@ int main() {
        // glDrawArrays(GL_LINE_LOOP,0,4);
         
         //glDrawArrays(GL_TRIANGLES,0,3);
-        glDrawElements(GL_TRIANGLES, 51 ,GL_UNSIGNED_INT,0);
+        glDrawElements(GL_TRIANGLES, 81 ,GL_UNSIGNED_INT,0);
 
         
         
